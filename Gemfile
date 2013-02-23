@@ -6,6 +6,11 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 gem 'jquery-rails'
+
+gem 'foreman'
+
+gem "airbrake"
+
 gem "mongoid", ">= 3.1.1"
 gem "rspec-rails", ">= 2.12.2", :group => [:development, :test]
 gem "database_cleaner", ">= 0.9.1", :group => :test
@@ -16,11 +21,10 @@ gem "bootstrap-sass", ">= 2.3.0.0"
 gem "devise", ">= 2.2.3"
 gem "cancan", ">= 1.6.8"
 gem "rolify", ">= 3.2.0"
-gem "twilio"
+gem "twilio-ruby"
 gem "resque"
 gem "resque-scheduler"
 gem "resque_mailer"
 gem "capistrano"
 gem "rvm-capistrano"
 gem "quiet_assets", ">= 1.0.1", :group => :development
-gem "figaro", ">= 0.5.3"
