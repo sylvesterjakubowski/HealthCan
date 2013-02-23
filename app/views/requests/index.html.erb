@@ -2,3 +2,7 @@
 
 
 
+
+<% @requests.each do |request| %>
+    <%=  render :partial => 'request', :locals => {:request => request} %>
+<% end %>

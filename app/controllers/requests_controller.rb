@@ -11,6 +11,7 @@ class RequestsController < ApplicationController
   def approve
     user = current_user
     @request = user.requests.where(:id => params[:id] ).first
+    @request.delete
 
     user.approved_providers << @request.provider.id
     user.save

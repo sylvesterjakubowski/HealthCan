@@ -1,0 +1,6 @@
+<div class="request">
+    <%= request.provider.name %> is requesting access to your dashboard
+
+    <%=  button_to "approve",  approve_request_path(request) %>
+    <%=  button_to "ignore",  ignore_request_path(request) %>
+</div>
