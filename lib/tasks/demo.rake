@@ -7,4 +7,10 @@ namespace "demo" do
 
   end
 
+  desc "Generate a User"
+  task :generate_user => :environment do
+    User.create!(:name => "testuser", :email=>"test@email.com" ,:password =>"dummypassword", :password_confirmation => "dummypassword", :phone => "16045550001")
+
+  end
+
 end

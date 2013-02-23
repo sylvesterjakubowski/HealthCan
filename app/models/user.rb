@@ -67,7 +67,9 @@ class User
   end
 
   def dummy_password
-    random_password = User.send(:generate_token, 'encrypted_password').slice(0, 8)
-    self.password = random_password
+    if self.password.nil?
+      random_password = User.send(:generate_token, 'encrypted_password').slice(0, 8)
+      self.password = random_password
+    end
   end
 end
