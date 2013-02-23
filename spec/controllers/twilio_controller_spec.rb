@@ -15,7 +15,7 @@ describe TwilioController do
     it "should register with valid email" do
       post 'text', {:From => "+16045061301", :To => "+16042106329", :Body => "imackinn@gmail.com"}
 
-      response.body.should include("Welcome to")
+      response.should be_success
       User.count.should be( 1 )
     end
   end
