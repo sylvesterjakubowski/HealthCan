@@ -11,6 +11,7 @@ class PostSignup
     if Provider.count < 2
       Rake::Task['demo:generate_providers'].invoke
     end
+
     @user.approved_providers << Provider.first.id
 
     Appointment.create_oncologist( @user, Provider.first )
@@ -21,7 +22,7 @@ class PostSignup
     unless Rails.env.test? || @user.phone.nil?
       TWILIO_ACCOUNT.sms.messages.create(
           :from => '+16047575181',
-          :to => user.phone,
+          :to => @user.phone,
           :body => @message
       )
     end
