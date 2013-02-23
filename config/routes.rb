@@ -11,7 +11,12 @@ HealthCan::Application.routes.draw do
   devise_for :users
   resources :users
 
-
+  resources :request do
+    member do
+      post :approve
+      post :ignore
+    end
+  end
 
   mount Resque::Server, :at => "/resque"
 

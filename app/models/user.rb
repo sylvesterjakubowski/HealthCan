@@ -49,6 +49,7 @@ class User
 
   field :phone
   has_many :appointments
+  embeds_many :requests
 
   field :name, :type => String
 
