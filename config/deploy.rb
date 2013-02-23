@@ -20,6 +20,7 @@ server 'lunarluau', :app, :web, :db, :primary => true
 set :port, '11235'
 set :use_sudo, false
 set :rails_env, "production"
+set :user, 'imack'
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
