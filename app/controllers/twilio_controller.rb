@@ -10,11 +10,22 @@ class TwilioController < ApplicationController
   def text
     logger.info "SMS REQUEST FROM  #{params['From']} to #{params["To"]} in #{params['FromCity']}, #{params['FromState']}: #{params['Body']}"
 
-
     @sender = User.find_by_phone( params['From'] )
 
+    if @sender.nil?
+      @sender = User.new(:phone => params['From'], :email => params['Body'].strip)
 
-    @message = "Welcome to Hacking Health!"
+      if @sender.save
+        @message = "Welcome to HealthCan!"
+      else
+        @message = ""
+        @sender.errors.each do |name, error|
+          @message = @message + name.to_s + " " + error + "\n"
+        end
+      end
+    else
+      @message = "You have already signed up with email: #{@sender.email}"
+    end
 
 
     render :xml => {:Sms => @message }.to_xml(:root => 'Response')
