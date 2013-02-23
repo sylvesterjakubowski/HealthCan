@@ -24,9 +24,14 @@ gem "devise", ">= 2.2.3"
 gem "cancan", ">= 1.6.8"
 gem "rolify", ">= 3.2.0"
 gem "twilio-ruby"
-gem "resque"
-gem "resque-scheduler"
-gem "resque_mailer"
+
+gem "redis"
+gem "redis-namespace"
+gem 'redis-rails'
+gem 'resque', :require => 'resque/server'
+gem 'resque_mailer'
+
+
 gem "capistrano"
 gem "rvm-capistrano"
 gem "quiet_assets", ">= 1.0.1", :group => :development
