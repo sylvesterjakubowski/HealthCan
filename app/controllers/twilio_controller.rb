@@ -16,19 +16,21 @@ class TwilioController < ApplicationController
       @sender = User.new(:phone => params['From'], :email => params['Body'].strip)
 
       if @sender.save
-        @sender.reset_authentication_token!
-        @message = "Welcome to HealthCan! You can access your dashboard here: #{ApplicationController.get_hostname}#{dashboard_path(:auth_token => @sender.authentication_token)}"
+        if !Rails.env.test?
+          Resque.enqueue( PostSignup, @sender.id )
+        end
+
+        render :nothing => true, :status => 200
       else
         @message = ""
         @sender.errors.each do |name, error|
           @message = @message + name.to_s + " " + error + "\n"
         end
+        render :xml => {:Sms => @message }.to_xml(:root => 'Response')
       end
     else
       @message = "You have already signed up with email: #{@sender.email}, access your dashboard:  #{ApplicationController.get_hostname}#{dashboard_path(:auth_token => @sender.authentication_token)}"
+      render :xml => {:Sms => @message }.to_xml(:root => 'Response')
     end
-
-
-    render :xml => {:Sms => @message }.to_xml(:root => 'Response')
   end
 end
