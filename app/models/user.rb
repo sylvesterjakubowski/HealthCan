@@ -3,6 +3,8 @@ class User
   rolify
   include Mongoid::Timestamps
 
+  field :phone
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -44,9 +46,15 @@ class User
   ## Token authenticatable
   # field :authentication_token, :type => String
   # run 'rake db:mongoid:create_indexes' to create indexes
+  index({ phone: 1 }, { unique: true, background: true })
   index({ email: 1 }, { unique: true, background: true })
   field :name, :type => String
   validates_presence_of :name
   attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at
+
+
+  def self.find_by_phone( number )
+    self.where(:phone => number).first
+  end
 end

@@ -5,6 +5,8 @@ HealthCan::Application.routes.draw do
     root :to => 'home#index'
   end
 
+  match '/twilio/text', :to => 'twilio#text', :as => :twilio_text, :via => :post
+
   devise_for :users
   resources :users
 
