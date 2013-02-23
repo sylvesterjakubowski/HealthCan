@@ -27,6 +27,7 @@ gem "twilio-ruby"
 
 gem "redis"
 gem "redis-namespace"
+gem 'resque-scheduler', "2.0.0.h", :require => 'resque_scheduler'
 gem 'redis-rails'
 gem 'resque', :require => 'resque/server'
 gem 'resque_mailer'
