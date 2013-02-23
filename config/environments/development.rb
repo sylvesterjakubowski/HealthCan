@@ -24,7 +24,7 @@ HealthCan::Application.configure do
   ActionMailer::Base.register_interceptor(DevelopmentMailInterceptor)
 
 
-  config.action_mailer.default_url_options = {:host => 'localhost', :port => 5000, :protocol => 'http'}
+  config.action_mailer.default_url_options = {:host => 'localhost', :port => 3000, :protocol => 'http'}
   config.action_mailer.asset_host = 'http://localhost:3000'
 
   # Do not compress assets

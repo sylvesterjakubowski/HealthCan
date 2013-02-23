@@ -4,10 +4,10 @@ class User
   include Mongoid::Timestamps
 
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
+  # :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
@@ -42,7 +42,7 @@ class User
   # field :locked_at,       :type => Time
 
   ## Token authenticatable
-  # field :authentication_token, :type => String
+  field :authentication_token, :type => String
   # run 'rake db:mongoid:create_indexes' to create indexes
   index({ phone: 1 }, { unique: true, background: true })
   index({ email: 1 }, { unique: true, background: true })

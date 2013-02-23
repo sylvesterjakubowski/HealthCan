@@ -16,7 +16,8 @@ class TwilioController < ApplicationController
       @sender = User.new(:phone => params['From'], :email => params['Body'].strip)
 
       if @sender.save
-        @message = "Welcome to HealthCan!"
+        @sender.reset_authentication_token!
+        @message = "Welcome to HealthCan! You can access your dashboard here: #{ApplicationController.get_hostname}#{dashboard_path(:auth_token => @sender.authentication_token)}"
       else
         @message = ""
         @sender.errors.each do |name, error|

@@ -6,9 +6,11 @@ HealthCan::Application.routes.draw do
   end
 
   match '/twilio/text', :to => 'twilio#text', :as => :twilio_text, :via => :post
+  match '/dashboard', :to => "home#dashboard", :as => :dashboard
 
   devise_for :users
   resources :users
+
 
 
   mount Resque::Server, :at => "/resque"
