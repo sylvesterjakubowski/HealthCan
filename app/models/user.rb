@@ -51,6 +51,10 @@ class User
   has_many :appointments
 
   field :name, :type => String
+
+  field :approved_providers, :type => Array, :default => []
+  field :approved_caregivers, :type => Array, :default => []
+
   #validates_presence_of :name
   before_validation :dummy_password
   attr_accessible :role_ids, :as => :admin
