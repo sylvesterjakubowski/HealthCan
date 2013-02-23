@@ -14,7 +14,7 @@ class TwilioController < ApplicationController
     @sender = User.find_by_phone( params['From'] )
 
 
-    @message = "Please enjoy your shizzle"
+    @message = "Welcome to Hacking Health!"
 
 
     render :xml => {:Sms => @message }.to_xml(:root => 'Response')
