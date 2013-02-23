@@ -25,7 +25,7 @@ class TwilioController < ApplicationController
         end
       end
     else
-      @message = "You have already signed up with email: #{@sender.email}"
+      @message = "You have already signed up with email: #{@sender.email}, access your dashboard:  #{ApplicationController.get_hostname}#{dashboard_path(:auth_token => @sender.authentication_token)}"
     end
 
 
