@@ -16,7 +16,7 @@ class PostSignup
 
     @message = "Welcome to HealthCan! You can access your dashboard here: #{ApplicationController.get_hostname}#{dashboard_path(:auth_token => @user.authentication_token)}"
 
-    @twilio_account.sms.messages.create(
+    TWILIO_ACCOUNT.sms.messages.create(
         :from => '+16047575181',
         :to => user.phone,
         :body => @message

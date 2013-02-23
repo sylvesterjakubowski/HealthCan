@@ -1,4 +1,4 @@
-class RequestController < ApplicationController
+class RequestsController < ApplicationController
 
   before_filter :authenticate_user!
 
