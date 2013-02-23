@@ -11,6 +11,8 @@ gem 'foreman'
 
 gem "airbrake"
 
+gem "aws-ses",:require => 'aws/ses'
+
 gem "mongoid", ">= 3.1.1"
 gem "rspec-rails", ">= 2.12.2", :group => [:development, :test]
 gem "database_cleaner", ">= 0.9.1", :group => :test

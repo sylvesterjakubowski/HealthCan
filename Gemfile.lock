@@ -33,6 +33,11 @@ GEM
       builder
       girl_friday
     arel (3.0.2)
+    aws-ses (0.4.4)
+      builder
+      mail (> 2.2.5)
+      mime-types
+      xml-simple
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.3.0.1)
       sass (~> 3.2)
@@ -206,12 +211,14 @@ GEM
       rack (>= 1.0.0)
     warden (1.2.1)
       rack (>= 1.0)
+    xml-simple (1.1.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   airbrake
+  aws-ses
   bootstrap-sass (>= 2.3.0.0)
   cancan (>= 1.6.8)
   capistrano
