@@ -7,6 +7,12 @@ set :scm, "git"
 set :rvm_ruby_string, "ruby-1.9.3-p286"
 require "rvm/capistrano" # Load RVM's capistrano plugin.
 
+
+before 'deploy:setup', 'rvm:install_rvm'
+before 'deploy:setup', 'rvm:install_ruby'
+after "deploy:update", "foreman:export"
+after "deploy:update", "foreman:restart"
+
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
@@ -43,6 +49,30 @@ end
 namespace :db do
   task :reload, :roles => :app do
     run("cd #{deploy_to}/current && bundle exec rake RAILS_ENV=#{rails_env} db:reload")
+  end
+end
+
+
+namespace :foreman do
+  desc 'Export the Procfile to Ubuntu upstart scripts'
+  task :export, :roles => :app do
+    run "cd #{release_path} && rvmsudo env PATH=$PATH bundle exec foreman export upstart /etc/init -e #{release_path}/config/foreman_#{rails_env}.env -a #{application} -u #{user} -l #{release_path}/log/foreman"
+  end
+
+  desc "Start the application services"
+  task :start, :roles => :app do
+    sudo "start #{application}"
+  end
+
+  desc "Stop the application services"
+
+  task :stop, :roles => :app do
+    sudo "stop #{application}"
+  end
+
+  desc "Restart the application services"
+  task :restart, :roles => :app do
+    run "sudo start #{application} || sudo restart #{application}"
   end
 end
 
