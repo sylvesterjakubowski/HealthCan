@@ -11,18 +11,25 @@ class RequestsController < ApplicationController
   def approve
     user = current_user
     @request = user.requests.where(:id => params[:id] ).first
-    @request.delete
 
-    user.approved_providers << @request.provider.id
-    user.save
+    unless @request.nil?
+      @request.delete
 
+      user.approved_providers << @request.provider.id
+      user.save
+
+    end
     redirect_to dashboard_path
-
   end
 
   def ignore
     user = current_user
     @request = user.requests.where(:id => params[:id] )
+
+    unless @request.nil?
+      @request.delete
+      user.save
+    end
 
     @request.delete
     user.save
