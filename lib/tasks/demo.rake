@@ -31,6 +31,7 @@ namespace "demo" do
   task :remind_appointment => :environment do
 
     User.each do |user|
+      sleep 2
       appointment = user.appointments.first
       Resque.enqueue(RemindAppointment, appointment.id) unless appointment.nil?
     end
