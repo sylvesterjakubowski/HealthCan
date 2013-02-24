@@ -35,8 +35,13 @@ class TwilioController < ApplicationController
 
     if params['appointment_id']
       @appointment = Appointment.find( params['appointment_id'] )
+
+      if @appointment
+        render :xml => @appointment
+      else
+        render :xml => {:Say => "You have an upcoming appointment" }.to_xml(:root => 'Response')
+      end
     end
 
-    render :xml => {:Say => "You have an upcoming appointment" }.to_xml(:root => 'Response')
   end
 end

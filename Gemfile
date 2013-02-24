@@ -11,6 +11,8 @@ gem 'foreman'
 
 gem "airbrake"
 
+gem 'nokogiri'
+
 gem "aws-ses",:require => 'aws/ses'
 
 gem "mongoid", ">= 3.1.1"
