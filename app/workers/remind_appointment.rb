@@ -9,7 +9,7 @@ class RemindAppointment
     TWILIO_ACCOUNT.calls.create(
         :from => '+16047575181',
         :to => @user.phone,
-        :url => "http://3gwu.localtunnel.com/twilio/voice?appointment_id=#{@appointment.id}"
+        :url => "http://dashboard.healthcan.net/twilio/voice?appointment_id=#{@appointment.id}"
     )
   end
 end
