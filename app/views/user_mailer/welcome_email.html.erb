@@ -6,11 +6,10 @@
 <body>
 <h1>Welcome to HealthCan.net, <%= @user.email %></h1>
 <p>
-  your username is: <%= @user.login %>.<br/>
+  To login to the site, just follow this link: <a href="<%= url_for dashboard_path(:auth_token => @user.authentication_token) %>">dashboard</a>
 </p>
-<p>
-  To login to the site, just follow this link: <%= @url %>.
-</p>
-<p>Thanks for joining and have a great day!</p>
+<p>Remember, 20-32% of medical appointments are missed; let us help you!</p>
+
+<%= image_tag 'HEALTHCAN.png' %>
 </body>
 </html>
