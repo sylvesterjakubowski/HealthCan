@@ -14,9 +14,11 @@ class PostSignup
     end
 
     @user.approved_providers << Provider.first.id
+    @user.approved_providers << Provider.all[1].id
 
     Appointment.create_oncologist( @user, Provider.first )
     Appointment.create_labwork( @user, Provider.first )
+    Appointment.create_catscan( @user, Provider.all[1] )
 
     @message = "Welcome to HealthCan! You can access your dashboard here: #{ApplicationController.get_hostname}#{Rails.application.routes.url_helpers.dashboard_path(:auth_token => @user.authentication_token)}"
 
@@ -28,6 +30,7 @@ class PostSignup
       )
     end
 
+    Resque.enqueue_in( 3.minutes, DemoCreateAppointment, @user.id)
 
   end
 end

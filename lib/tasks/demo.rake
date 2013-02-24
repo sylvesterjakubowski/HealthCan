@@ -21,4 +21,19 @@ namespace "demo" do
     end
   end
 
+
+  desc "Notify of New Appointment"
+  task :notify_appointment => :environment do
+    Resque.enqueue(DemoCreateAppointment, User.first.id)
+  end
+
+  desc "Remind Appointment"
+  task :remind_appointment => :environment do
+
+    User.each do |user|
+      appointment = user.appointments.first
+      Resque.enqueue(RemindAppointment, appointment.id) unless appointment.nil?
+    end
+  end
+
 end
