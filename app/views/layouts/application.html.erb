@@ -12,13 +12,15 @@
     <%= yield(:head) %>
 
     <script>
-    $(function() {
-      $("appleu").click( function()
-           {
-             alert('button clicked');
-           }
-      );
-    });
+      jQuery(function() {
+          jQuery('a').click(function() {
+              var target = $(this).data('target');
+              {
+                  jQuery('.targetDiv').hide();
+                  jQuery('#div' + target).show();
+              }
+          });
+      });    
     </script>
 
   </head>
