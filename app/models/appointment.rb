@@ -75,6 +75,7 @@ class Appointment
 
     builder = Nokogiri::XML::Builder.new do |xml|
       xml.Response {
+        xml.Pause(:length =>'2')
         xml.Say "This is a reminder for your #{self.subject} appointment in #{distance_of_time_in_words(Time.now, self.time)}. Press 1 to confirm your attendance. Be sure to vote for Hacking Health entry number 18, healthcan.net "
       }
     end
