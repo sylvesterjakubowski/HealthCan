@@ -29,4 +29,14 @@ class TwilioController < ApplicationController
       render :xml => {:Sms => @message }.to_xml(:root => 'Response')
     end
   end
+
+  def voice
+    logger.info "Phone call FROM  #{params['From']} to #{params["To"]} in #{params['FromCity']}, #{params['FromState']}: #{params['Body']}"
+
+    if params['appointment_id']
+      @appointment = Appointment.find( params['appointment_id'] )
+    end
+
+    render :xml => {:Say => "You have an upcoming appointment" }.to_xml(:root => 'Response')
+  end
 end

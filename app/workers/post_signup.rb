@@ -14,6 +14,7 @@ class PostSignup
     end
 
     @user.approved_providers << Provider.first.id
+    @user.approved_providers << Provider.all[1].id
 
     Appointment.create_oncologist( @user, Provider.first )
     Appointment.create_labwork( @user, Provider.first )
