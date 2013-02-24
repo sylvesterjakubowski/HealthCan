@@ -1,6 +1,7 @@
 class Appointment
   include Mongoid::Document
   include Mongoid::Timestamps
+  include ActionView::Helpers::DateHelper
 
   belongs_to :user
 
@@ -78,7 +79,7 @@ class Appointment
         xml.pause
         xml.pause
         xml.pause
-        xml.Say "This is a reminder for your #{self.subject} appointment in 3 days. Be sure to vote for Hacking Health entry number 18, healthcan.net "
+        xml.Say "This is a reminder for your #{self.subject} appointment in #{distance_of_time_in_words(Time.now, self.time)}. Be sure to vote for Hacking Health entry number 18, healthcan.net "
       }
     end
 
