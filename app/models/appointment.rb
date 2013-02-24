@@ -37,7 +37,7 @@ class Appointment
     appointment = Appointment.create( :user => user, :provider => provider) do |u|
       u.subject = "Lab work - blood test"
       u.time = 3.days.from_now
-      u.description = "The purpose of this blood test is to make sure your kidneys will be able to get rid of the dye. Not getting this blood test may delay your CAT scan appointment."
+      u.description = "The purpose of this blood test is to make sure your kidneys will be able to get rid of the dye. Not getting this blood test will delay your CAT scan appointment."
       u.venue = "100 W 10th Ave, Vancouver BC"
       u.reminders = "No special instructions before the test. Note: This test must be completed before the CAT scan."
     end
