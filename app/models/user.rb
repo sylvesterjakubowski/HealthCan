@@ -60,10 +60,14 @@ class User
   before_validation :dummy_password
   attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at
-
+  after_create :post_signup
 
   def self.find_by_phone( number )
     self.where(:phone => number).first
+  end
+
+  def post_signup
+    Resque.enqueue( PostSignup, self.id )
   end
 
   def dummy_password

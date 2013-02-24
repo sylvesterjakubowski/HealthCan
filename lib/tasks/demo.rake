@@ -8,7 +8,7 @@ namespace "demo" do
 
   desc "Generate a User"
   task :generate_user => :environment do
-    User.create!(:name => "testuser", :email=>"test@email.com" ,:password =>"dummypassword", :password_confirmation => "dummypassword")
+    user = User.create!(:name => "testuser", :email=>"test@email.com" ,:password =>"dummypassword", :password_confirmation => "dummypassword")
   end
 
   desc "Request Access for a provider"
