@@ -19,7 +19,7 @@ class RequestsController < ApplicationController
       user.save
 
     end
-    redirect_to dashboard_path
+    redirect_to dashboard_path(:auth_token => user.authentication_token)
   end
 
   def ignore
@@ -34,6 +34,6 @@ class RequestsController < ApplicationController
     @request.delete
     user.save
 
-    redirect_to dashboard_path
+    redirect_to dashboard_path(:auth_token => user.authentication_token)
   end
 end
