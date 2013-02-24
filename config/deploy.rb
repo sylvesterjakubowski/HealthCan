@@ -73,7 +73,7 @@ namespace :foreman do
 
   desc "Restart the application services"
   task :restart, :roles => :app do
-    run "rvmsudo start #{application} || rvmsudo restart #{application}"
+    run "rvmsudo restart #{application}"
   end
 end
 
