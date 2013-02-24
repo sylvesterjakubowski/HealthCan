@@ -30,7 +30,7 @@ class PostSignup
       )
     end
 
-    Resque.enqueue_in( 1.minute, DemoCreateAppointment, @user.id)
+    Resque.enqueue_in( 3.minutes, DemoCreateAppointment, @user.id)
 
   end
 end
