@@ -24,12 +24,7 @@ namespace "demo" do
 
   desc "Notify of New Appointment"
   task :notify_appointment => :environment do
-
-    provider = Provider.first
-
-    User.each do |user|
-      user.requests.create(:provider => provider)
-    end
+    Resque.enqueue(DemoCreateAppointment, User.first.id)
   end
 
   desc "Remind Appointment"
