@@ -59,7 +59,7 @@ class User
   #validates_presence_of :name
   before_validation :dummy_password
   attr_accessible :role_ids, :as => :admin
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at, :phone
   after_create :post_signup
 
   def self.find_by_phone( number )
