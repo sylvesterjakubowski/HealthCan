@@ -3,15 +3,17 @@
 
 <h1>This is your dashboard</h1>
 <div class="container">
-  <div class="row-fluid feed">
-    <div class="pull-left span2">
-       <p class="datecaption">FEB</p>
-       <strong><p class="date">24</p></strong>
-       <p class="datecaption">Wednesday</p>
-    </div>
-    <div class="pull-left span6">
-      <p class="appointment">Meeting with Dr. Strangelove</p>
-      <p class="appt_detail">Blood Work Results Discussion</p>
-    </div> 
-  </div>
+  <% @appointments.each do |appointment| %>
+      <div class="row-fluid feed">
+        <div class="pull-left span2">
+           <p class="datecaption"><%= appointment.time.to_time.strftime("%b") %></p>
+           <strong><p class="date"><%= appointment.time.to_time.strftime("%d") %></p></strong>
+           <p class="datecaption"><%= appointment.time.to_time.strftime("%A") %></p>
+        </div>
+        <div class="pull-left span6">
+          <p class="appointment"><%= appointment.subject %></p>
+          <p class="appt_detail"><%= appointment.description %></p>
+        </div>
+      </div>
+  <% end %>
 </div>
