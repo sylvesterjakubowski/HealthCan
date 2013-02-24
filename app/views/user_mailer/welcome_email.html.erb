@@ -4,7 +4,7 @@
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 </head>
 <body>
-<h1>Welcome to HealthCan.net, <%= @user.email %></h1>
+<h2>Welcome to HealthCan.net, <%= @user.email %></h2>
 <p>
   To login to the site, just follow this link: <a href="<%= url_for dashboard_path(:auth_token => @user.authentication_token) %>">dashboard</a>
 </p>

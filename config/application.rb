@@ -79,6 +79,13 @@ module HealthCan
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    config.action_mailer.delivery_method = :ses
+    #config.action_mailer.delivery_method = :ses
+
+    config.action_mailer.delivery_method = :mailgun
+    config.action_mailer.mailgun_settings = {
+        :api_key  => "key-7aw913ow671jx5564a4eoq-ik1kn8l21",
+        :api_host => "healthcan.mailgun.org"
+    }
+
   end
 end

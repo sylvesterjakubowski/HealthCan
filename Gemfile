@@ -37,6 +37,7 @@ gem 'redis-rails'
 gem 'resque', :require => 'resque/server'
 gem 'resque_mailer'
 
+gem "mailgun-rails"
 
 gem "capistrano"
 gem "rvm-capistrano"
