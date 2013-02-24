@@ -31,8 +31,9 @@ class PostSignup
     #  )
     #end
 
-    Resque.enqueue(DemoCreateAppointment, @user.id)
-    Resque.enqueue_in( 3.minutes, DemoAuthRequest, @user.id)
+    Resque.enqueue( DemoAuthRequest, @user.id)
+    Resque.enqueue_in( 3.minutes,DemoCreateAppointment, @user.id)
+
     UserMailer.welcome_email( @user.id ).deliver
 
   end
