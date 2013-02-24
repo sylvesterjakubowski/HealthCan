@@ -1,4 +1,4 @@
-class RequestController < ApplicationController
+class RequestsController < ApplicationController
 
   before_filter :authenticate_user!
 
@@ -12,16 +12,24 @@ class RequestController < ApplicationController
     user = current_user
     @request = user.requests.where(:id => params[:id] ).first
 
-    user.approved_providers << @request.provider.id
-    user.save
+    unless @request.nil?
+      @request.delete
 
+      user.approved_providers << @request.provider.id
+      user.save
+
+    end
     redirect_to dashboard_path
-
   end
 
   def ignore
     user = current_user
     @request = user.requests.where(:id => params[:id] )
+
+    unless @request.nil?
+      @request.delete
+      user.save
+    end
 
     @request.delete
     user.save

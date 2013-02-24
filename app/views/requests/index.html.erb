@@ -1,0 +1,8 @@
+<h1>Requests</h1>
+
+
+
+
+<% @requests.each do |request| %>
+    <%=  render :partial => 'request', :locals => {:request => request} %>
+<% end %>

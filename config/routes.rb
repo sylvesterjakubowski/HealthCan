@@ -11,7 +11,7 @@ HealthCan::Application.routes.draw do
   devise_for :users
   resources :users
 
-  resources :request do
+  resources :requests do
     member do
       post :approve
       post :ignore

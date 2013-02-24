@@ -16,10 +16,6 @@ class TwilioController < ApplicationController
       @sender = User.new(:phone => params['From'], :email => params['Body'].strip)
 
       if @sender.save
-        if !Rails.env.test?
-          Resque.enqueue( PostSignup, @sender.id )
-        end
-
         render :nothing => true, :status => 200
       else
         @message = ""

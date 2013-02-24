@@ -17,6 +17,7 @@ describe TwilioController do
 
       response.should be_success
       User.count.should be( 1 )
+      Appointment.count.should be( 2 )
     end
   end
 

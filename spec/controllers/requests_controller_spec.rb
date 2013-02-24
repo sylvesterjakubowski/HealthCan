@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe RequestController do
+describe RequestsController do
 
   describe "GET 'index'" do
     it "returns http success" do
