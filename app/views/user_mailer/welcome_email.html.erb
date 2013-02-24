@@ -4,11 +4,11 @@
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 </head>
 <body>
-<h2>Welcome to HealthCan.net, <%= @user.email %></h2>
+<h2>Welcome to HealthCan.net,</h2>
 <p>
-  To login to the site, just follow this link: <a href="<%= url_for dashboard_path(:auth_token => @user.authentication_token) %>">dashboard</a>
+  Be sure to login to your <a href="<%= url_for dashboard_path(:auth_token => @user.authentication_token) %>">dashboard</a>
 </p>
-<p>Remember, 20-32% of medical appointments are missed; let us help you!</p>
+<p>20-32% of appointments are missed; let us help you!</p>
 
 <%= image_tag 'HEALTHCAN.png' %>
 </body>

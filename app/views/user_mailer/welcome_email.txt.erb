@@ -1,5 +1,6 @@
-<h1>Welcome to HealthCan.net, <%= @user.email %></h1>
-<p>
-  To login to the site, just follow this link: <a href="<%= url_for dashboard_path(:auth_token => @user.authentication_token) %>">dashboard</a>
-</p>
-<p>Remember, 20-32% of medical appointments are missed; let us help you!</p>
+Welcome to HealthCan.net,
+
+Be sure to login to your dashboard <%= url_for dashboard_path(:auth_token => @user.authentication_token) %>">
+
+
+20-32% of appointments are missed; let us help you
