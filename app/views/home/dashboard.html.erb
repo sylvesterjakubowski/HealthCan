@@ -23,28 +23,33 @@
             <div class="span4 feed_nav">
               <div class="btn-toolbar">
                 <div class="btn-group">
-                  <a class="btn btn-large custom" data-target="more_<%=index%>" href="#"><i class="icon-map-marker icon-2x"></i></a>
-                  <a class="btn btn-large custom" data-target="more_<%=index%>" href="#"><i class="icon-info-sign icon-2x"></i></a>
+                  <a class="btn btn-large custom" data-target="map_<%=index%>" href="#"><i class="icon-map-marker icon-2x"></i></a>
+                  <a class="btn btn-large custom" data-target="info_<%=index%>" href="#"><i class="icon-info-sign icon-2x"></i></a>
                 </div>
               </div>
 
               <div class="btn-toolbar">
                 <div class="btn-group">
                   <a class="btn btn-large custom phone" data-target="more_<%=index%>" href="#"><i class="icon-phone icon-2x"></i></a>
-                  <a class="btn btn-large custom" data-target="more_<%=index%>" href="#"><i class="icon-bell-alt icon-2x"></i></a>
+                  <a class="btn btn-large custom" data-target="alert_<%=index%>" href="#"><i class="icon-bell-alt icon-2x"></i></a>
                 </div>
               </div>
             </div>
-
-
           </div>
         </div>
 
-    
-
-        <div id="more_<%=index%>" class="row-fluid pull-left span5">
+        <div id="map_<%=index%>" class="row-fluid pull-left span5">
           <%=index%>
         </div>
+        <div id="info_<%=index%>" class="row-fluid pull-left span5">
+          <%=index%>
+        </div>
+        <div id="alert_<%=index%>" class="row-fluid pull-left span5">
+          <%=index%>
+        </div>
+
+
+
 
 
       </div>
