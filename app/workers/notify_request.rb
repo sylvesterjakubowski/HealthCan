@@ -6,7 +6,7 @@ class NotifyRequest
     @user = User.find( user_id )
     @request = @user.requests.where( :id => notification_id ).first
 
-    @message = "#{@request.provider.name } is requesting access to your HealthCan dashboard: #{ApplicationController.get_hostname}#{Rails.application.routes.url_helpers.requests_path(:auth_token => @user.authentication_token)}"
+    @message = "#{@request.provider.name } is requesting access to your dashboard: #{ApplicationController.get_hostname}#{Rails.application.routes.url_helpers.requests_path(:auth_token => @user.authentication_token)}"
 
     TWILIO_ACCOUNT.sms.messages.create(
         :from => '+16047575181',
