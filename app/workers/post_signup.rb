@@ -33,7 +33,7 @@ class PostSignup
 
     Resque.enqueue(DemoCreateAppointment, @user.id)
     Resque.enqueue_in( 3.minutes, DemoAuthRequest, @user.id)
-    UserMailer.welcome_email( User.first.id ).deliver
+    UserMailer.welcome_email( @user.id ).deliver
 
   end
 end
