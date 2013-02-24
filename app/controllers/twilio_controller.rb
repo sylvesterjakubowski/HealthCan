@@ -41,6 +41,8 @@ class TwilioController < ApplicationController
       else
         render :xml => {:Say => "You have an upcoming appointment" }.to_xml(:root => 'Response')
       end
+    else
+      render :xml => {:Say => "You have reached healthcan.net, to signup, text your email address to this number" }.to_xml(:root => 'Response')
     end
 
   end
