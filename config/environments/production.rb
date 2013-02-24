@@ -20,6 +20,9 @@ HealthCan::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  config.action_controller.asset_host = "http://cdn.healthcan.net"
+  config.action_mailer.asset_host = 'http://cdn.healthcan.net'
+
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
