@@ -75,6 +75,8 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
+    font-awesome-rails (3.0.2.0)
+      railties (>= 3.1)
     foreman (0.60.2)
       thor (>= 0.13.6)
     girl_friday (0.10.0)
@@ -244,6 +246,7 @@ DEPENDENCIES
   devise (>= 2.2.3)
   email_spec (>= 1.4.0)
   factory_girl_rails (>= 4.2.0)
+  font-awesome-rails
   foreman
   haml
   jquery-rails
